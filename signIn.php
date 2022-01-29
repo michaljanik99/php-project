@@ -29,33 +29,26 @@ function filtruj($zmienna)
         <label class="form_title"><b>Hasło</b></label>
         <input class="form_input" type="password" name="haslo1"><br>
 
-        <label class="form_title"><b>Powtórz hasłó</b></label>
-        <input class="form_input" type="password" name="haslo2"><br><br>
-
         <label class="form_title"><b>E-mail</b></label>
-        <input class="form_input" type="text" name="email"><br>
+        <input class="form_input" type="email" name="email"><br>
 
         <input class="btn_form btn_register" type="submit" value="Utwórz konto" name="rejestruj">
     </form>
         <a href="index.php"><button class="btn_form btn_login" style="width: 230px">Zaloguj się</button> </a>
 <?php
-        if (isset($_POST['rejestruj'])) {
-            $login = filtruj($_POST['login']);
-            $haslo1 = filtruj($_POST['haslo1']);
-            $haslo2 = filtruj($_POST['haslo2']);
-            $email = filtruj($_POST['email']);
+
 
             // sprawdzamy czy login nie jest już w bazie
-            if(isset($_POST['login'])) {
+            if(isset($_POST['rejestruj'])) {
                 $login = filtruj($_POST['login']);
                 $haslo1 = filtruj($_POST['haslo1']);
-                $haslo2 = filtruj($_POST['haslo2']);
                 $email = filtruj($_POST['email']);
 
-                    if($_POST['login'] && $_POST['haslo1'] && $_POST['haslo2'] && $_POST['email']) {
+                    if($_POST['login'] && $_POST['haslo1']  && $_POST['email']) {
+                        $haslo1 = md5($haslo1);
                         if(!mysqli_num_rows(mysqli_query($serwer, "SELECT  `login` FROM `users` WHERE login='$login'"))) {
                             mysqli_query($serwer, "insert into users (login, password, email) values('$login','$haslo1','$email')") or exit("Przepraszamy, wystąpił nieoczekiwany błąd");
-                            echo ' <a href="index.php"><input class="btn_form btn_login" type="submit" value="Przejdź do logowania" name="logIn"></a>';
+                            echo '<p>Konto utworzone</p>';
                         }else {
                             echo "<p style='color: red'>Użytkownik o podanym loginie istnieje. Prosze wybrac inny</p>";
                         }
@@ -64,7 +57,7 @@ function filtruj($zmienna)
                     }
                         mysqli_close($serwer);
             }
-        }
+
         ?>
 </div>
 </body>
