@@ -7,15 +7,11 @@ function filtruj($zmienna)
     return htmlspecialchars(trim($zmienna));
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="pl">
-
 <head>
     <meta charset="UTF-8">
     <title>Mateusz Burnagiel i Michał Janik</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./spacing.css">
+    <link rel="stylesheet" href="./style.css?<?=time()?>">
+    <link rel="stylesheet" href="./spacing.css?<?=time()?>">
     <script src="https://kit.fontawesome.com/d63cfc9fc7.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -65,7 +61,7 @@ function filtruj($zmienna)
         }
         else
         {
-        echo  "<p style='color: red'>Proszę podać wszystkie dane</p>".$form;
+            echo  "<p style='color: red'>Proszę podać wszystkie dane</p>";
         }
         mysqli_close($serwer);
         }

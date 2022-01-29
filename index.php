@@ -11,8 +11,8 @@ if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true){
 <head>
     <meta charset="UTF-8">
     <title>Mateusz Burnagiel i Michał Janik</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./spacing.css">
+    <link rel="stylesheet" href="./style.css?<?=time()?>">
+    <link rel="stylesheet" href="./spacing.css?<?=time()?>">
     <script src="https://kit.fontawesome.com/d63cfc9fc7.js" crossorigin="anonymous"></script>
 </head>
   <body>

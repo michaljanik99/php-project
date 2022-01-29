@@ -17,8 +17,8 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
 <head>
     <meta charset="UTF-8">
     <title>Mateusz Burnagiel i Michał Janik</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./spacing.css">
+    <link rel="stylesheet" href="./style.css?<?=time()?>">
+    <link rel="stylesheet" href="./spacing.css?<?=time()?>">
     <script src="https://kit.fontawesome.com/d63cfc9fc7.js" crossorigin="anonymous"></script>
 
 
@@ -51,13 +51,15 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
         <li class="new">Dodaj</li>
     </nav>
     <aside>
+
         <?php while($row = mysqli_fetch_array($dataPasswords)) { ?>
 
         <article class="block-passwords display_no ">
             <ul class="sin_opt">
-                <li class="edit">EDIT</li>       
-                <li class="deleteProject">Delete</li>
-                <li class="save saveajax">SAVE</li>
+                <form method="post">
+                <input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='EDIT'>
+                <input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='DELETE'>
+                </form>
             </ul>
             <main ><?=$row['Name']?>
             </main>
@@ -83,9 +85,10 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
     <?php while($row = mysqli_fetch_array($dataCards)) { ?>
         <article class="block-cards display_no ">
             <ul class="sin_opt">
-                <li class="edit">EDIT</li>           
-                <li class="deleteProject">Delete</li>
-                <li class="save saveajax">SAVE</li>
+            <form method="post">
+                <input class="edit" type='submit' name='cardDelete[<?=$row['ID']?>]' value='EDIT'>
+                <input class="edit" type='submit' name='cardDelete[<?=$row['ID']?>]' value='DELETE'>
+            </form>
             </ul>
             <main ><?=$row['Name'] . " / " . $row['PaymentCardIssuer'] ?>
             </main>
@@ -112,9 +115,10 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
         <?php while($row = mysqli_fetch_array($dataPersonalInfo)) { ?>
         <article class="block-personal_data display_no">
             <ul class="sin_opt">
-                <li class="edit">EDIT</li>           
-                <li class="deleteProject">Delete</li>
-                <li class="save saveajax">SAVE</li>
+                <form method="post">
+                    <input class="edit" type='submit' name='dataDelete[<?=$row['ID']?>]' value='EDIT'>
+                    <input class="edit" type='submit' name='dataDelete[<?=$row['ID']?>]' value='DELETE'>
+                </form>
             </ul>
             <main ><?=$row['Name'] . "  " . $row['SecondName'] . " " . $row['LastName'] ?>
             </main>
@@ -215,5 +219,42 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
     <script src="./app.js"></script>
 
 </body>
+<?php
+function delete($nr,$table) {
+    global $serwer;
+    mysqli_query($serwer, "delete from $table where ID=$nr") or exit("Błąd w zapytaniu: ");
+    echo '<meta http-equiv="refresh" content="0">';
 
+}
+$command = '';
+function makeOperation($command,$nr,$table){
+    switch($command) {
+        case 'EDIT': echo $nr; break;
+        case 'DELETE': delete($nr,$table); break;
+
+    }
+}
+if(isset($_POST['passDelete'])) {
+    $nr = key($_POST['passDelete']);
+    $command = $_POST['passDelete'][$nr];
+    $table ="passtable";
+    makeOperation($command,$nr,$table);
+}
+if(isset($_POST['cardDelete'])) {
+    $nr = key($_POST['cardDelete']);
+    $command = $_POST['cardDelete'][$nr];
+    $table ="cardstable";
+    makeOperation($command,$nr,$table);
+}
+
+if(isset($_POST['dataDelete'])) {
+    $nr = key($_POST['dataDelete']);
+    $command = $_POST['dataDelete'][$nr];
+    $table ="personaldatatable";
+    makeOperation($command,$nr,$table);
+}
+
+
+
+?>
 </html>
