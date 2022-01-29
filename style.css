@@ -311,7 +311,7 @@ summary {
 }
 
 .active summary {
-	height: 100%;
+	height: 15%;
 	opacity: 1;
 }
 
