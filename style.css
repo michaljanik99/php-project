@@ -441,15 +441,6 @@ li {
 }
 
 
-
-
-@media print {
-	.bar {
-		display: none;
-	}
-}
-
-
 .noresult {
 	display: none;
 }
@@ -865,7 +856,7 @@ main img {
 	display: none;
 }
 
-.popup_edit input[type=text], .popup_edit input[type=email], .popup_edit input[type=number], .popup_edit input[type=password] {
+.popup_edit input[type=text], .popup_edit input[type=email], .popup_edit input[type=number],.popup_edit input[type=phone] {
 	width: 100%;
 	padding: 5px;
 	margin: 5px 0 22px 0;
@@ -874,6 +865,7 @@ main img {
 }
 
 .popup_edit{
+	margin-top: 15% !important;
 	height: auto;
 	width: 500px;
 	position: relative;

@@ -48,9 +48,9 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable where
         </div>
     </div>
     <aside>
-        <li class="new block-passwords display_no"><form method="post"><input class="new" type='submit' name='passDelete[0]' value='dodaj'></form></li>
-        <li class="new block-cards display_no "><form method="post"><input class="new" type='submit' name='cardDelete[0]' value='dodaj'></form></li>
-        <li class="new block-personal_data display_no"><form method="post"><input class="new" type='submit' name='dataDelete[0]' value='dodaj'></form></li>
+        <li class="new block-passwords display_ye"><form method="post"><input class="new" type='submit' name='passDelete[0]' value='dodaj'></form></li>
+        <li class="new block-cards display_ye "><form method="post"><input class="new" type='submit' name='cardDelete[0]' value='dodaj'></form></li>
+        <li class="new block-personal_data display_ye"><form method="post"><input class="new" type='submit' name='dataDelete[0]' value='dodaj'></form></li>
         <?php
         while($row = mysqli_fetch_array($dataPasswords)) { ?>
 
@@ -240,9 +240,8 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable where
             <button type="button" class="btn btn_cancel">Anuluj</button>
         </form>
     </form>
-    <!-- partial -->
+    <!-- scripts -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-    <script src="./script.js"></script>
     <script src="./app.js"></script>
 
 </body>
@@ -264,7 +263,7 @@ function edit($nr=-1,$table) {
     <label class='form_title'>WŁAŚCICIEL</label> 
 	<input class='form_input' type=text name='OwnerName' value='' size=15 style='text-align: left'>
 	<label class='form_title'>NUMER</label> 
-	<input class='form_input' type=text name='Number' value='' size=15 style='text-align: left'>
+	<input class='form_input' type=text name='Number' min='0' value='' size=15 style='text-align: left'>
     <label class='form_title'>MM/RR</label> 
     <div>
     <input class='form_input' type=number name='mm' value='' style='width: 40%;'>/<input class='form_input' type=number name='rr' value='' style='width: 40%;'>
@@ -283,7 +282,7 @@ function edit($nr=-1,$table) {
 	<label class='form_title'>EMAIL</label> 
 	<input class='form_input' type=email name='email' value='' size=15 style='text-align: left'>
     <label class='form_title'>PASSWORD</label> 
-	<input class='form_input' type=password name='password' value='' size=15 style='text-align: left'>
+	<input class='form_input' type=text name='password' value='' size=15 style='text-align: left'>
 	 <label class='form_title'>URL</label> 
 	<input class='form_input' type=text name='url' value='' size=15 style='text-align: left'>
 	<input class='btn btn_add' type=submit name='passEdit[$nr]' value='Zastosuj'>
@@ -292,15 +291,15 @@ function edit($nr=-1,$table) {
             break;
         case 'personaldatatable': $popup_edit.="
 <form method=POST action='itemsMenage.php'> 
-    <label  class='form_title'>IMIĘ</label> 
+    <label class='form_title'>IMIĘ</label> 
 	<input type=text name='Name' value='' size=15 style='text-align: left'>
-	<label class='form_input' class='form_title' >DRUGIE IMIĘ</label> 
-	<input type=text name='SecondName' value='' size=15 style='text-align: left'>
-	<label class='form_input' class='form_title'>NAZWISKO</label> 
-	<input type=text name='LastName' value='' size=15 style='text-align: left'>
-	<label class='form_input' class='form_title'>PESEL</label> 
-	<input type=text name='PESEL' value='' size=15 style='text-align: left'>
-	<label class='form_input' class='form_title'>E-MAIL</label> 
+	<label class='form_title' >DRUGIE IMIĘ</label> 
+	<input class='form_input' type=text name='SecondName' value='' size=15 style='text-align: left'>
+	<label class='form_title'>NAZWISKO</label> 
+	<input class='form_input' type=text name='LastName' value='' size=15 style='text-align: left'>
+	<label class='form_title'>PESEL</label> 
+	<input class='form_input' type=text name='PESEL' value='' size=15 style='text-align: left'>
+	<label class='form_title'>E-MAIL</label> 
 	<input class='form_input' type=email name='E-mail' value='' size=15 style='text-align: left'>
 	<label class='form_title'>TELEFON</label> 
 	<input class='form_input' type=phone name='PhoneNumber' value='' size=15 style='text-align: left'>
@@ -316,13 +315,8 @@ function edit($nr=-1,$table) {
 	<a href='panel.php'><input class='btn btn_cancel' type=button value='Anuluj'></a>
 </form>";
             break;
-
-
     }
     echo $popup_edit."</div>";
-
-
-
 }
 $command = '';
 function makeOperation($command,$nr,$table){
@@ -354,8 +348,6 @@ if(isset($_POST['dataDelete'])) {
     $table ="personaldatatable";
     makeOperation($command,$nr,$table);
 }
-
-
 
 ?>
 </html>
