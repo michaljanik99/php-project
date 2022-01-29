@@ -192,71 +192,6 @@ $(document).ready(function () {
 
     });
 
-    $("article summary").click(function (e) {
-        e.stopPropagation();
-    });
-
-    $('.alias a:not(.out):not(.generate), .logo').on('click', function (ev) {
-
-        ev.preventDefault();
-        $('#search').val($(this).text()).focus();
-
-        var keyword = $(this).text();
-        var options = {};
-        $("main").unmark();
-        $('main').mark(keyword, options);
-
-        $("main").parent().removeClass('noresult');
-
-        $('main').each(function () {
-
-            if ($(this).children('mark').length <= 0) {
-
-                $(this).parent().removeClass('noresult');
-                $(this).parent().addClass('noresult');
-            }
-
-            if ($("#search").val() == 0)
-                $("main").unmark().parent().removeClass("noresult");
-
-        });
-
-    });
-
-    $(".logo").click(function () {
-
-        $(".bar").toggleClass("active");
-        $(".pro,td").removeClass("active");
-        $("main").unmark().parent().removeClass("active");
-
-    });
-
-
-    $(".new").click(function () {
-
-        if ($('article.active').hasClass('domain')) {
-
-            $('article.active').children('._domain').append('<section class="kontenti" tipi="domain"><a class="remove_section"></a>\
-               <span contenteditable="true" parent="" class="domain" style="width:16%">mikseo.ch</span>\
-               <span contenteditable="true" parent="" class="registrar" style="width:16%">hostpoint</span>\
-               <span contenteditable="true" parent="" class="username" style="width:16%">user</span>\
-               <span contenteditable="true" parent="" class="password" style="width:16%">pass</span>\
-               <span contenteditable="true" parent="" class="date" style="width:16%">2015-03-14</span>\
-               <span contenteditable="true" parent="" class="expiry" style="width:16%"></span>\
-           </section>').clone(true);
-        } else {
-
-            $('article.active').removeClass("active");
-
-            $("article.cloned").removeClass("active").clone(true).prependTo("aside").addClass("active").addClass("editing").removeClass('cloned').addClass('klonim').removeAttr("style");
-            $("article.editing").children('main').attr("contenteditable", "true");
-            $("article.editing section:not(.title) span").attr("contenteditable", "true");
-            $("nav").removeClass("add_new edit_save").addClass("sub_sect");
-        }
-
-
-    });
-
 
 
     $(".submen li").click(function (e) {
@@ -348,24 +283,6 @@ $(document).ready(function () {
         $("nav").removeAttr("class").addClass("edit_save");
         $('article.editing').removeClass('editing');
         $(".submen").removeClass("active");
-
-    });
-
-    //password generator
-    jQuery(".generate").click(function () {
-
-        var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz!?=+*";
-        var string_length = 10;
-        var randomstring = '';
-
-        for (var i = 0; i < string_length; i++) {
-
-            var rnum = Math.floor(Math.random() * chars.length);
-            randomstring += chars.substring(rnum, rnum + 1);
-
-        }
-
-        $(this).text(randomstring);
 
     });
 

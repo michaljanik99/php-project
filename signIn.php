@@ -7,6 +7,10 @@ function filtruj($zmienna)
     return htmlspecialchars(trim($zmienna));
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <title>Mateusz Burnagiel i Michał Janik</title>
@@ -61,7 +65,7 @@ function filtruj($zmienna)
         }
         else
         {
-            echo  "<p style='color: red'>Proszę podać wszystkie dane</p>";
+        echo  "<p style='color: red'>Proszę podać wszystkie dane</p>".$form;
         }
         mysqli_close($serwer);
         }

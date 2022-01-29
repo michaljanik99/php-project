@@ -28,7 +28,7 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
     <!-- partial:index.partial.html -->
     <div class="container">
     <div class="bar">
-        <h2 class="title_site">Crypton <?= $_SESSION['userId'] ?> </h2>
+        <h2 class="title_site">Crypton </h2>
         <div class="">
             <button class="btn btn_password">
                 <p id="password" class="title_sidebar"><i class="fas fa-passport mr-2"></i>Hasła</p>
@@ -40,25 +40,25 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
                 <p id="identify" class="title_sidebar"><i class="far fa-id-card mr-2"></i>Tozsamość</p>
             </button>
             <a href="logOut.php">
-            <button class="btn btn_identify mt-50" style="background-color: #d7d6d6; font-weight: bold;">
+            <button class="btn btn_logout mt-50" style="background-color: #d7d6d6; font-weight: bold;">
                 <p class="title_sidebar"><i class="fas fa-sign-out-alt mr-2"></i>Wyloguj</p>
             </button>
             </a>
         </div>
     </div>
-    //
-    <nav class="add_new1">
-        <li class="new">Dodaj</li>
-    </nav>
     <aside>
 
         <?php while($row = mysqli_fetch_array($dataPasswords)) { ?>
 
         <article class="block-passwords display_no ">
+            <nav class="add_new1">
+                <li class="new">Dodaj</li>
+            </nav>
             <ul class="sin_opt">
                 <form method="post">
-                <input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='EDIT'>
-                <input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='DELETE'>
+                    <input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='EDIT'>
+                    <input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='DELETE'>
+                    <input class="new" type='submit' name='passDelete[<?=$row['ID']?>]' value='Dodaj'></input>
                 </form>
             </ul>
             <main ><?=$row['Name']?>
@@ -86,8 +86,9 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
         <article class="block-cards display_no ">
             <ul class="sin_opt">
             <form method="post">
-                <input class="edit" type='submit' name='cardDelete[<?=$row['ID']?>]' value='EDIT'>
-                <input class="edit" type='submit' name='cardDelete[<?=$row['ID']?>]' value='DELETE'>
+                <input class="edit" type='submit' name='cardDelete[<?=$row['ID']?>]' value='EDIT'><i class="far fa-edit"></i>
+                <input class="delete" type='submit' name='cardDelete[<?=$row['ID']?>]' value='DELETE'>
+                <input class="new" type='submit' name='passDelete[<?=$row['ID']?>]' value='Dodaj'></input>
             </form>
             </ul>
             <main ><?=$row['Name'] . " / " . $row['PaymentCardIssuer'] ?>
@@ -118,6 +119,7 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
                 <form method="post">
                     <input class="edit" type='submit' name='dataDelete[<?=$row['ID']?>]' value='EDIT'>
                     <input class="edit" type='submit' name='dataDelete[<?=$row['ID']?>]' value='DELETE'>
+                    <input class="new" type='submit' name='passDelete[<?=$row['ID']?>]' value='Dodaj'></input>
                 </form>
             </ul>
             <main ><?=$row['Name'] . "  " . $row['SecondName'] . " " . $row['LastName'] ?>
@@ -146,7 +148,7 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
 
     <form class="form-popup" id="myForm">
         <form action="" class="form-container">
-            <label> Dodaj
+            <label> <h2 style="text-align: center"> Dodaj</h2>
 
             <select id="select" class="option" name="option">
                 <option value=""></option>

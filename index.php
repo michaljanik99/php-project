@@ -17,8 +17,9 @@ if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true){
 </head>
   <body>
   <div>
-      <h2 class="title_site">Crypton </h2>
+      <h2 class="title_site"><i class="fas fa-user-lock fa-4x"></i> </h2>
       <br><div style="display: flex;align-items: center; flex-direction: column">
+          <h4> Sejf jest zablokowany. Zaloguj się, aby kontynuować.</h4>
           <form method="POST" action="logIn.php">
               <label class="form_title"><b>Login</b></label>
               <input class="form_input" type="text" name="login"><br>
@@ -29,7 +30,7 @@ if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true){
               <input class="btn_form btn_login" type="submit" value="Zaloguj" name="logIn">
 
           </form>
-          <a href="signIn.php"><button class="btn_form btn_register">Zarjestruj się</button> </a>
+          <a href="signIn.php"><button class="btn_form btn_register" style="width: 230px">Zarjestruj się</button> </a>
 
               <?php
           if(isset($_SESSION['error_1']) && $_SESSION['error_1']==true){
