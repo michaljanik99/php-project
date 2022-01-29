@@ -227,12 +227,13 @@ function delete($nr,$table) {
 
 }
 function edit($nr,$table) {
-    //global $serwer;
-   // mysqli_query($serwer, "delete from $table where ID=$nr") or exit("Błąd w zapytaniu: ");
-    //echo '<meta http-equiv="refresh" content="0">';
-     echo "<div class='popup_edit'>
-     <a href='panel.php'>X</a>
-	<form method=POST action='itemsMenage.php'> 
+    $popup_edit="<div class='popup_edit'><a href='panel.php'>X</a>";
+    switch ($table){
+        case 'cardstable': $popup_edit.="<form method=POST action='itemsMenage.php'> 
+    <label>NAZWA</label> 
+	<input type=text name='Name' value='' size=15 style='text-align: left'>
+	<label>WYDAWCA</label> 
+	<input type=text name='PaymentCardIssuer' value='' size=15 style='text-align: left'>
     <label>WŁAŚCICIEL</label> 
 	<input type=text name='OwnerName' value='' size=15 style='text-align: left'>
 	<label>NUMER</label> 
@@ -245,6 +246,48 @@ function edit($nr,$table) {
 	<input type=text name='ccv_cvc' value='' size=15 style='text-align: left'>
 	<input type=submit name='cardEdit[$nr]' value='Edytuj' style='width:200px'></td>
 	</table></form></div>";
+        break;
+        case 'passtable': $popup_edit.="<form method=POST action='itemsMenage.php'> 
+    <label>NICK</label> 
+	<input type=text name='Nick' value='' size=15 style='text-align: left'>
+	<label>EMAIL</label> 
+	<input type=email name='email' value='' size=15 style='text-align: left'>
+    <label>PASSWORD</label> 
+	<input type=password name='password' value='' size=15 style='text-align: left'>
+	 <label>URL</label> 
+	<input type=text name='url' value='' size=15 style='text-align: left'>
+	<input type=submit name='passEdit[$nr]' value='Edytuj' style='width:200px'></td>
+	</table></form></div>";
+            break;
+        case 'personaldatatable': $popup_edit.="<form method=POST action='itemsMenage.php'> 
+    <label>IMIĘ</label> 
+	<input type=text name='Name' value='' size=15 style='text-align: left'>
+	<label>DRUGIE IMIĘ</label> 
+	<input type=text name='SecondName' value='' size=15 style='text-align: left'>
+	<label>NAZWISKO</label> 
+	<input type=text name='LastName' value='' size=15 style='text-align: left'>
+	<label>PESEL</label> 
+	<input type=text name='PESEL' value='' size=15 style='text-align: left'>
+	<label>E-MAIL</label> 
+	<input type=text name='E-mail' value='' size=15 style='text-align: left'>
+	<label>TELEFON</label> 
+	<input type=text name='PhoneNumber' value='' size=15 style='text-align: left'>
+	<label>ADRES</label> 
+	<input type=text name='Adress' value='' size=15 style='text-align: left'>
+	<label>KOD POCZTOWY</label> 
+	<input type=text name='Postcode' value='' size=15 style='text-align: left'>
+	<label>MIASTO</label> 
+	<input type=text name='City' value='' size=15 style='text-align: left'>
+	<label>KRAJ</label> 
+	<input type=text name='Country' value='' size=15 style='text-align: left'>
+	<input type=submit name='personaldataEdit[$nr]' value='Edytuj' style='width:200px'></td>
+	</table></form></div>";
+            break;
+
+
+    }
+    echo $popup_edit."</div>";
+
 
 
 }
