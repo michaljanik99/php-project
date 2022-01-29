@@ -7,7 +7,6 @@ if(!isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']!==true){
 require_once('connect.php');
 global $serwer;
 $userId= $_SESSION['userId'];
-echo $userId;
 $dataPasswords = mysqli_query($serwer ,"SELECT * FROM passTable where user_ID = $userId");
 $dataCards = mysqli_query($serwer ,"SELECT * FROM cardsTable where user_ID = $userId");
 $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable where user_ID = $userId");
@@ -49,12 +48,14 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable where
         </div>
     </div>
     <aside>
-
-        <?php while($row = mysqli_fetch_array($dataPasswords)) { ?>
+        <li class="new block-passwords display_no"><form method="post"><input class="new" type='submit' name='passDelete[0]' value='dodaj'></form></li>
+        <li class="new block-cards display_no "><form method="post"><input class="new" type='submit' name='cardDelete[0]' value='dodaj'></form></li>
+        <li class="new block-personal_data display_no"><form method="post"><input class="new" type='submit' name='dataDelete[0]' value='dodaj'></form></li>
+        <?php
+        while($row = mysqli_fetch_array($dataPasswords)) { ?>
 
         <article class="block-passwords display_no ">
             <nav class="add_new1">
-                <li class="new"><form method="post"><input class="new" type='submit' name='passDelete[<?=$row['ID']?>]' value='dodaj'></form></li>
             </nav>
             <ul class="sin_opt">
                 <form method="post">
@@ -87,7 +88,6 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable where
         <article class="block-cards display_no ">
             <nav class="add_new1">
 
-                <li class="new"><form method="post"><input class="new" type='submit' name='cardDelete[<?=$row['ID']?>]' value='dodaj'></form></li>
             </nav>
             <ul class="sin_opt">
             <form method="post">
@@ -120,7 +120,7 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable where
         <?php while($row = mysqli_fetch_array($dataPersonalInfo)) { ?>
         <article class="block-personal_data display_no">
             <nav class="add_new1">
-                <li class="new"><form method="post"><input class="new" type='submit' name='dataDelete[<?=$row['ID']?>]' value='dodaj'></form></li>
+
             </nav>
             <ul class="sin_opt">
                 <form method="post">

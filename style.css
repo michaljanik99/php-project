@@ -753,7 +753,11 @@ input[class="new"] {
 	line-height: 21px;
 	color: #fff !important;
 	font-weight: bold;
+	position: absolute;
+	top: -51px;
+	right: 10px;
 }
+
 
 input[class="new"]:hover {
 	background: rgb(21, 178, 155);
