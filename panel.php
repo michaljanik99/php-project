@@ -52,13 +52,12 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
 
         <article class="block-passwords display_no ">
             <nav class="add_new1">
-                <li class="new"><input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='Dodaj 1'></li>
+                <li class="new"><input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='dodaj'></li>
             </nav>
             <ul class="sin_opt">
                 <form method="post">
-                    <input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='EDIT'>
-                    <input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='DELETE'>
-                    <input class="new" type='submit' name='passDelete[<?=$row['ID']?>]' value='Dodaj'>
+                    <input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='edytuj'>
+                    <input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='usuń'>
                 </form>
             </ul>
             <main ><?=$row['Name']?>
@@ -85,13 +84,12 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
     <?php while($row = mysqli_fetch_array($dataCards)) { ?>
         <article class="block-cards display_no ">
             <nav class="add_new1">
-                <li class="new"><input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='Dodaj 2'></li>
+                <li class="new"><input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='dodaj'></li>
             </nav>
             <ul class="sin_opt">
             <form method="post">
-                <input class="edit" type='submit' name='cardDelete[<?=$row['ID']?>]' value='EDIT'><i class="far fa-edit"></i>
-                <input class="delete" type='submit' name='cardDelete[<?=$row['ID']?>]' value='DELETE'>
-                <input class="new" type='submit' name='passDelete[<?=$row['ID']?>]' value='Dodaj'></input>
+                <input class="edit" type='submit' name='cardDelete[<?=$row['ID']?>]' value='edytuj'>
+                <input class="delete" type='submit' name='cardDelete[<?=$row['ID']?>]' value='usuń'>
             </form>
             </ul>
             <main ><?=$row['Name'] . " / " . $row['PaymentCardIssuer'] ?>
@@ -119,13 +117,12 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
         <?php while($row = mysqli_fetch_array($dataPersonalInfo)) { ?>
         <article class="block-personal_data display_no">
             <nav class="add_new1">
-                <li class="new"><input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='Dodaj 3'></li>
+                <li class="new"><input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='dodaj'></li>
             </nav>
             <ul class="sin_opt">
                 <form method="post">
-                    <input class="edit" type='submit' name='dataDelete[<?=$row['ID']?>]' value='EDIT'>
-                    <input class="edit" type='submit' name='dataDelete[<?=$row['ID']?>]' value='DELETE'>
-                    <input class="new" type='submit' name='passDelete[<?=$row['ID']?>]' value='Dodaj'></input>
+                    <input class="edit" type='submit' name='dataDelete[<?=$row['ID']?>]' value='edytuj'>
+                    <input class="edit" type='submit' name='dataDelete[<?=$row['ID']?>]' value='usuń'>
                 </form>
             </ul>
             <main ><?=$row['Name'] . "  " . $row['SecondName'] . " " . $row['LastName'] ?>
@@ -279,9 +276,9 @@ function edit($nr,$table) {
 	<label>PESEL</label> 
 	<input type=text name='PESEL' value='' size=15 style='text-align: left'>
 	<label>E-MAIL</label> 
-	<input type=text name='E-mail' value='' size=15 style='text-align: left'>
+	<input type=email name='E-mail' value='' size=15 style='text-align: left'>
 	<label>TELEFON</label> 
-	<input type=text name='PhoneNumber' value='' size=15 style='text-align: left'>
+	<input type=phone name='PhoneNumber' value='' size=15 style='text-align: left'>
 	<label>ADRES</label> 
 	<input type=text name='Adress' value='' size=15 style='text-align: left'>
 	<label>KOD POCZTOWY</label> 
@@ -304,8 +301,9 @@ function edit($nr,$table) {
 $command = '';
 function makeOperation($command,$nr,$table){
     switch($command) {
-        case 'EDIT': edit($nr,$table); break;
-        case 'DELETE': delete($nr,$table); break;
+        case 'edytuj': edit($nr,$table); break;
+        case 'usuń': delete($nr,$table); break;
+        case 'dodaj': edit("",$table);; break;
 
     }
 }
