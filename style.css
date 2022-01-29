@@ -714,9 +714,36 @@ article ul {
 	top: 18px;
 }
 
-input[name=""]
+input[class="edit"], input[class="new"], input[class="del"] {
+	border: none;
+	width: 80px;
+	height: 40px;
+	border-radius: 4px;
+	color: #fff;
+	text-transform: uppercase;
+	cursor: pointer;
+}
 
-.new {
+input[class="del"] {
+	background-color: #e1172f;
+	transition: .3s;
+}
+
+input[class="del"]:hover {
+	background-color: #c9162b;
+}
+
+input[class="edit"] {
+	background-color: #48d7f6;
+	transition: .3s;
+}
+
+input[class="edit"]:hover {
+	background-color: #3baec7;
+}
+
+
+input[class="new"] {
 	font-size: 15px;
 	width: 80px !important;
 	height: 40px !important;
