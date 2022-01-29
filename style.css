@@ -445,7 +445,6 @@ nav li {
 /*PASSWORD TOGGLE*/
 
 section span {
-	text-overflow: ellipsis;
 	position: relative;
 }
 
@@ -753,51 +752,6 @@ article ul {
 	top: 18px;
 }
 
-
-
-@media print {
-	body * {
-		visibility: hidden;
-	}
-	article.active,
-	article.active * {
-		visibility: visible;
-	}
-	article,
-	article *,
-	.bar {
-		display: none;
-	}
-	article {
-		border: 1px solid #eaeff1 !important;
-	}
-	aside {
-		top: 0px !important;
-		width: 98% !important;
-		position: absolute !important;
-	}
-	main {
-		box-shadow: 0px 1px 0px #eaeff1 !important;
-		border-bottom: 0px solid #eaeff1 !important;
-		background-color: #eaeff1 !important;
-	}
-	section {
-		border: 0px solid #eaeff1 !important;
-		margin: 0px !important;
-		box-shadow: 0px -1px 0px #eaeff1 !important;
-	}
-	#shtype {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100% !important;
-		margin-left: 0px !important;
-	}
-	summary .title span {
-		font-size: 10px !important;
-	}
-}
-
 nav .new {
 	font-size: 15px;
 	width: 80px;
@@ -918,9 +872,9 @@ main img {
 	border-radius: 8px;
 	z-index: 999;
 	padding: 20px;
+	background-color: #fff;
 }
 
-/* Full-width input fields */
 .form-container input[type=text], .form-container input[type=email], .form-container input[type=number] {
 	width: 100%;
 	padding: 15px;
@@ -964,13 +918,12 @@ main img {
 	margin-bottom: 20px;
 }
 
-
 .btn {
 	color: white;
 	padding: 16px 20px;
 	border: none;
 	cursor: pointer;
-	width: 48%;
+	width: 49%;
 	margin-bottom:10px;
 }
 .btn_add {
@@ -979,4 +932,46 @@ main img {
 
 .btn_cancel{
 	background-color: #aa0404;
+}
+.btn_form {
+	width: 100%;
+	height: 30px;
+	cursor: pointer;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 800;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.btn_login {
+	color: #000;
+	background-color: #fffefe;
+	border: 1px solid rgb(23,214,186);
+	border-radius: 4px;
+	transition: background-color .3s;
+}
+.btn_login:hover {
+	background-color: rgb(23,214,186);
+}
+
+.btn_register {
+	width: 100%;
+	color: #000;
+	background-color: #fffefe;
+	border: 1px solid rgb(23,214,186);
+	border-radius: 4px;
+	transition: .3s;
+}
+
+.btn_register:hover {
+	background-color: rgb(2, 94, 185);
+	color: #fff;
+}
+
+
+.incorect {
+	color: red;
+	font-weight: 800;
+	text-transform: uppercase;
 }

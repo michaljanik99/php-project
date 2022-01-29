@@ -5,30 +5,38 @@ if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true){
     exit();
 };
 ?>
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <title>Hello, world!</title>
-  </head>
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mateusz Burnagiel i Michał Janik</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./spacing.css">
+    <script src="https://kit.fontawesome.com/d63cfc9fc7.js" crossorigin="anonymous"></script>
+</head>
   <body>
-  <main>
-  <h1 class="visually-hidden">Logowanie</h1>
+  <div>
+      <h2 class="title_site">Crypton </h2>
       <br><div style="display: flex;align-items: center; flex-direction: column">
           <form method="POST" action="logIn.php">
-          <b>Login:</b> <input type="text" name="login"><br>
-          <b>Hasło:</b> <input type="password" name="password"><br>
-          <input type="submit" value="Zaloguj" name="logIn">
+              <label class="form_title"><b>Login</b></label>
+              <input class="form_input" type="text" name="login"><br>
+
+              <label class="form_title"><b>Hasło</b></label>
+              <input class="form_input" type="password" name="password"><br>
+
+              <input class="btn_form btn_login" type="submit" value="Zaloguj" name="logIn">
+
           </form>
-          <a href="signIn.php">Zarjestruj się</a>
-          <?php
+          <a href="signIn.php"><button class="btn_form btn_register">Zarjestruj się</button> </a>
+
+              <?php
           if(isset($_SESSION['error_1']) && $_SESSION['error_1']==true){
-             echo "Bedne hasło";
+             echo '<p class="incorect">Błędne hasło </p>';
           };
           if(isset($_SESSION['error_2']) && $_SESSION['error_2']==true){
-              echo "Urzytkownik nie istnije";
+              echo '<p class="incorect">Użytkownik nie istnieje</p>' ;
           };
           ?>
       </div>

@@ -5,7 +5,11 @@
  const btn_new = document.querySelector('.add_new1');
  const btn_cancel = document.querySelector('.btn_cancel');
  const btn_add = document.querySelector('.btn_add');
- const selectedOption = document.querySelector('#select').value;
+ const selectedOption = document.querySelector('.option');
+ const addPassword = document.querySelector('.addPassword');
+ const addCard = document.querySelector('.addCard');
+ const addData = document.querySelector('.addData');
+
 
  const blockPasswords = document.querySelectorAll('.block-passwords');
  const blockCards = document.querySelectorAll('.block-cards');
@@ -57,13 +61,24 @@
      document.querySelector('.container').style.opacity = "1";
  }
 
- selectedOption.onchange = selected;
-function selected(e){
-     console.log(e.target.value.length)
- }
+ selectedOption.addEventListener('change', (e) => {
+     if (e.target.value == 1) {
+        addPassword.classList.toggle('display_ye');
+        addCard.classList.remove('display_ye');
+        addData.classList.remove('display_ye');
+     } else if (e.target.value == 2) {
+         addCard.classList.toggle('display_ye');
+         addData.classList.remove('display_ye');
+         addPassword.classList.remove('display_ye');
+     } else if (e.target.value == 3) {
+         addData.classList.toggle('display_ye');
+         addCard.classList.remove('display_ye');
+         addPassword.classList.remove('display_ye');
+     } else {
+         alert("Musisz cos wybrac");
+     }
+ });
 
-
- btn_add.addEventListener('onchange', selected);
  btn_cancel.addEventListener('click', closeNewRecord);
  btn_new.addEventListener('click', addNewRecord);
  btn_password.addEventListener('click', showPasswords);
@@ -310,48 +325,6 @@ $(document).ready(function () {
 
 
 
-
-    //remove section
-    $('.deleteProject').click(function () {
-
-        if ($('.sin_opt').children('li').hasClass('removeli') == false) {
-
-            $(this).parent().prepend("<li class='removeli'>Are u sure? <div class='remove'>yes</div> <div class='donot'>no</div></li>");
-
-            $('.donot').click(function () {
-
-                $('.removeli').remove();
-            });
-
-
-
-            $('.remove').click(function () {
-
-
-                var project_id = $(this).parent().parent().parent().children('main').attr('id');
-
-                //dont forget to change this class active to >>>>> EDITING **
-
-                if ($('article.active').hasClass('klonim'))
-
-                    $('article.active').remove();
-
-                else if (project_id == null)
-
-                    alert('Please click edit on project you want to delete!');
-
-                else {
-
-                }
-
-            });
-
-
-
-        }
-
-
-    });
 
 
 

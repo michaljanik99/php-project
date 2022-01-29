@@ -28,9 +28,7 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
     <!-- partial:index.partial.html -->
     <div class="container">
     <div class="bar">
-        <h2 class="title_site">Crypton</h2>
-        <?= $_SESSION['userId'] ?>
-        <a href="logOut.php">Wyloguj</a>
+        <h2 class="title_site">Crypton <?= $_SESSION['userId'] ?> </h2>
         <div class="">
             <button class="btn btn_password">
                 <p id="password" class="title_sidebar"><i class="fas fa-passport mr-2"></i>Hasła</p>
@@ -41,9 +39,11 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
             <button class="btn btn_identify">
                 <p id="identify" class="title_sidebar"><i class="far fa-id-card mr-2"></i>Tozsamość</p>
             </button>
+            <a href="logOut.php">
             <button class="btn btn_identify mt-50" style="background-color: #d7d6d6; font-weight: bold;">
                 <p class="title_sidebar"><i class="fas fa-sign-out-alt mr-2"></i>Wyloguj</p>
             </button>
+            </a>
         </div>
     </div>
     //
@@ -51,10 +51,7 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
         <li class="new">Dodaj</li>
     </nav>
     <aside>
-        
-
         <?php while($row = mysqli_fetch_array($dataPasswords)) { ?>
-
 
         <article class="block-passwords display_no ">
             <ul class="sin_opt">
@@ -145,14 +142,15 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
 
     <form class="form-popup" id="myForm">
         <form action="" class="form-container">
-            <h1>Dodaj</h1>
+            <label> Dodaj
 
             <select id="select" class="option" name="option">
-                <option value="0"></option>
+                <option value=""></option>
                 <option value="1">Hasło</option>
                 <option value="2">Karta płatnicza</option>
-                <option value="3">Data</option>
+                <option value="3">Dane osobowe</option>
             </select>
+            </label>
             <div class="addPassword hide">
                 <label class="form_title">Nazwa</label>
                 <input type="text" class="form_input">
@@ -166,7 +164,7 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
                 <input type="text" class="form_input">
             </div>
 
-            <div class="addCard">
+            <div class="addCard hide">
                 <label class="form_title">Nazwa</label>
                 <input type="text" class="form_input">
                 <label class="form_title">Wydawca</label>
@@ -182,7 +180,28 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
                 <label class="form_title">CVC/CVV</label>
                 <input type="number" min="0" max="999" class="form_input">
             </div>
-            <div class="addData hide"></div>
+            <div class="addData hide">
+                <label class="form_title">Imię</label>
+                <input type="text" class="form_input">
+                <label class="form_title">Drugie imię</label>
+                <input type="text" class="form_input">
+                <label class="form_title">Nazwisko</label>
+                <input type="text" class="form_input">
+                <label class="form_title">PESEL</label>
+                <input type="number" class="form_input" min="0">
+                <label class="form_title">E-mail</label>
+                <input type="email" class="form_input">
+                <label class="form_title">Telefon</label>
+                <input type="number" class="form_input">
+                <label class="form_title">Adres</label>
+                <input type="text" class="form_input">
+                <label class="form_title">Kod pocztowy</label>
+                <input type="number" class="form_input">
+                <label class="form_title">Miasto</label>
+                <input type="text" class="form_input">
+                <label class="form_title">Kraj</label>
+                <input type="text" class="form_input">
+            </div>
 
 
 
