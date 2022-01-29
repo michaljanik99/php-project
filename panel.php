@@ -52,12 +52,12 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
 
         <article class="block-passwords display_no ">
             <nav class="add_new1">
-                <li class="new"><input class="new" type='submit' name='passDelete[<?=$row['ID']?>]' value='dodaj'></li>
+                <li class="new"><form method="post"><input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='dodaj'></form></li>
             </nav>
             <ul class="sin_opt">
                 <form method="post">
                     <input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='edytuj'>
-                    <input class="del" type='submit' name='passDelete[<?=$row['ID']?>]' value='usuń'>
+                    <input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='usuń'>
                 </form>
             </ul>
             <main ><?=$row['Name']?>
@@ -118,7 +118,7 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
         <?php while($row = mysqli_fetch_array($dataPersonalInfo)) { ?>
         <article class="block-personal_data display_no">
             <nav class="add_new1">
-                <li class="new"><input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='dodaj'></li>
+                <li class="new"><form method="post"><input class="edit" type='submit' name='dataDelete[<?=$row['ID']?>]' value='dodaj'></form></li>
             </nav>
             <ul class="sin_opt">
                 <form method="post">
