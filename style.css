@@ -725,12 +725,12 @@ input[class="edit"], input[class="new"], input[class="del"] {
 }
 
 input[class="del"] {
-	background-color: #e1172f;
+	background-color: #942532;
 	transition: .3s;
 }
 
 input[class="del"]:hover {
-	background-color: #c9162b;
+	background-color: #ea0621;
 }
 
 input[class="edit"] {
@@ -753,6 +753,10 @@ input[class="new"] {
 	line-height: 21px;
 	color: #fff !important;
 	font-weight: bold;
+}
+
+input[class="new"]:hover {
+	background: rgb(21, 178, 155);
 }
 
 main img {

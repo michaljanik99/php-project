@@ -52,12 +52,12 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
 
         <article class="block-passwords display_no ">
             <nav class="add_new1">
-                <li class="new"><form method="post"><input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='dodaj'></form></li>
+                <li class="new"><form method="post"><input class="new" type='submit' name='passDelete[<?=$row['ID']?>]' value='dodaj'></form></li>
             </nav>
             <ul class="sin_opt">
                 <form method="post">
                     <input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='edytuj'>
-                    <input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='usuń'>
+                    <input class="del" type='submit' name='passDelete[<?=$row['ID']?>]' value='usuń'>
                 </form>
             </ul>
             <main ><?=$row['Name']?>
@@ -85,12 +85,12 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
         <article class="block-cards display_no ">
             <nav class="add_new1">
 
-                <li class="new"><form method="post"><input class="edit" type='submit' name='cardDelete[<?=$row['ID']?>]' value='dodaj'></form></li>
+                <li class="new"><form method="post"><input class="new" type='submit' name='cardDelete[<?=$row['ID']?>]' value='dodaj'></form></li>
             </nav>
             <ul class="sin_opt">
             <form method="post">
                 <input class="edit" type='submit' name='cardDelete[<?=$row['ID']?>]' value='edytuj'>
-                <input class="delete" type='submit' name='cardDelete[<?=$row['ID']?>]' value='usuń'>
+                <input class="del" type='submit' name='cardDelete[<?=$row['ID']?>]' value='usuń'>
             </form>
             </ul>
             <main ><?=$row['Name'] . " / " . $row['PaymentCardIssuer'] ?>
@@ -118,12 +118,12 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
         <?php while($row = mysqli_fetch_array($dataPersonalInfo)) { ?>
         <article class="block-personal_data display_no">
             <nav class="add_new1">
-                <li class="new"><form method="post"><input class="edit" type='submit' name='dataDelete[<?=$row['ID']?>]' value='dodaj'></form></li>
+                <li class="new"><form method="post"><input class="new" type='submit' name='dataDelete[<?=$row['ID']?>]' value='dodaj'></form></li>
             </nav>
             <ul class="sin_opt">
                 <form method="post">
                     <input class="edit" type='submit' name='dataDelete[<?=$row['ID']?>]' value='edytuj'>
-                    <input class="edit" type='submit' name='dataDelete[<?=$row['ID']?>]' value='usuń'>
+                    <input class="del" type='submit' name='dataDelete[<?=$row['ID']?>]' value='usuń'>
                 </form>
             </ul>
             <main ><?=$row['Name'] . "  " . $row['SecondName'] . " " . $row['LastName'] ?>
