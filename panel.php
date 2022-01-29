@@ -5,18 +5,20 @@ if(!isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']!==true){
     exit();
 };
 require_once('connect.php');
-    global $serwer;
-    $dataPasswords = mysqli_query($serwer ,"SELECT * FROM passTable");
-    $dataCards = mysqli_query($serwer ,"SELECT * FROM cardsTable");
-    $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
-    ?>
+global $serwer;
+$dataPasswords = mysqli_query($serwer ,"SELECT * FROM passTable");
+$dataCards = mysqli_query($serwer ,"SELECT * FROM cardsTable");
+$dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
+?>
 
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <title>Mateusz Burnagiel i Michał Janik</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./spacing.css">
     <script src="https://kit.fontawesome.com/d63cfc9fc7.js" crossorigin="anonymous"></script>
 
 
@@ -24,28 +26,29 @@ require_once('connect.php');
 
 <body>
     <!-- partial:index.partial.html -->
+    <div class="container">
     <div class="bar">
         <h2 class="title_site">Crypton</h2>
         <?= $_SESSION['userId'] ?>
         <a href="logOut.php">Wyloguj</a>
         <div class="">
-            <a href="">
-                <p id="favourite" class="title_sidebar"><i class="far fa-star mr-2"></i>Ulubione</p>
-            </a>
-            <button class="btn_password">
+            <button class="btn btn_password">
                 <p id="password" class="title_sidebar"><i class="fas fa-passport mr-2"></i>Hasła</p>
             </button>
-            <button class="btn_card">
+            <button class=" btn btn_card">
                 <p id="card" class="title_sidebar"><i class="fas fa-credit-card mr-2"></i>Karta</p>
             </button>
-            <button class="btn_identify">
+            <button class="btn btn_identify">
                 <p id="identify" class="title_sidebar"><i class="far fa-id-card mr-2"></i>Tozsamość</p>
+            </button>
+            <button class="btn btn_identify mt-50" style="background-color: #d7d6d6; font-weight: bold;">
+                <p class="title_sidebar"><i class="fas fa-sign-out-alt mr-2"></i>Wyloguj</p>
             </button>
         </div>
     </div>
-    <input class="search" type="search" id="search" size="15" placeholder="Szukaj" autocomplete="off">
-    <nav class="add_new">
-        <li class="new">new</li>
+    //
+    <nav class="add_new1">
+        <li class="new">Dodaj</li>
     </nav>
     <aside>
         
@@ -53,7 +56,7 @@ require_once('connect.php');
         <?php while($row = mysqli_fetch_array($dataPasswords)) { ?>
 
 
-        <article class="block-passwords ">
+        <article class="block-passwords display_no ">
             <ul class="sin_opt">
                 <li class="edit">EDIT</li>       
                 <li class="deleteProject">Delete</li>
@@ -78,10 +81,10 @@ require_once('connect.php');
                 </section>
             </summary>
         </article>
-        <?php }?>
+        <?php } ?>
 
     <?php while($row = mysqli_fetch_array($dataCards)) { ?>
-        <article class="block-card ">
+        <article class="block-cards display_no ">
             <ul class="sin_opt">
                 <li class="edit">EDIT</li>           
                 <li class="deleteProject">Delete</li>
@@ -110,7 +113,7 @@ require_once('connect.php');
 
 
         <?php while($row = mysqli_fetch_array($dataPersonalInfo)) { ?>
-        <article class="block-personal_data ">
+        <article class="block-personal_data display_no">
             <ul class="sin_opt">
                 <li class="edit">EDIT</li>           
                 <li class="deleteProject">Delete</li>
@@ -138,10 +141,59 @@ require_once('connect.php');
         </article>
         <?php } ?>
     </aside>
+    </div>
+
+    <form class="form-popup" id="myForm">
+        <form action="" class="form-container">
+            <h1>Dodaj</h1>
+
+            <select id="select" class="option" name="option">
+                <option value="0"></option>
+                <option value="1">Hasło</option>
+                <option value="2">Karta płatnicza</option>
+                <option value="3">Data</option>
+            </select>
+            <div class="addPassword hide">
+                <label class="form_title">Nazwa</label>
+                <input type="text" class="form_input">
+                <label class="form_title">Nick</label>
+                <input type="text" class="form_input">
+                <label class="form_title">E-mail</label>
+                <input type="email" class="form_input">
+                <label class="form_title">Hasło</label>
+                <input type="text" class="form_input">
+                <label class="form_title">URL</label>
+                <input type="text" class="form_input">
+            </div>
+
+            <div class="addCard">
+                <label class="form_title">Nazwa</label>
+                <input type="text" class="form_input">
+                <label class="form_title">Wydawca</label>
+                <input type="text" class="form_input">
+                <label class="form_title">Właściciel</label>
+                <input type="text" class="form_input">
+                <label class="form_title"Numer</label>
+                <input type="number" min="0" class="form_input">
+                <label class="form_title">Miesiąc</label>
+                <input type="number" min="1" max="12" class="form_input">
+                <label class="form_title">Rok</label>
+                <input type="number" min="21" max="99" class="form_input">
+                <label class="form_title">CVC/CVV</label>
+                <input type="number" min="0" max="999" class="form_input">
+            </div>
+            <div class="addData hide"></div>
+
+
+
+            <button type="button" class="btn btn_add">Dodaj</button>
+            <button type="button" class="btn btn_cancel">Anuluj</button>
+        </form>
+    </form>
     <!-- partial -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script src="./script.js"></script>
-    <!-- <script src="./app.js"></script> -->
+    <script src="./app.js"></script>
 
 </body>
 
