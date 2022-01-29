@@ -8,7 +8,7 @@ if (!isset($_POST['login']) || !isset($_POST['password']))
     require_once('connect.php');
     global $serwer;
     $login = $_POST['login'];
-    $password = $_POST['password'];
+    $password = md5($_POST['password']);
 
     if(mysqli_num_rows(mysqli_query($serwer, "SELECT  `login` FROM `users` WHERE login='$login'")))
     {
