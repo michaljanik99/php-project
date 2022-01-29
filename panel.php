@@ -27,7 +27,6 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable where
 
 <body>
     <!-- partial:index.partial.html -->
-    <div class="container">
     <div class="bar">
         <h2 class="title_site">Crypton </h2>
         <div class="">
