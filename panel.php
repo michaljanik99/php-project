@@ -226,10 +226,32 @@ function delete($nr,$table) {
     echo '<meta http-equiv="refresh" content="0">';
 
 }
+function edit($nr,$table) {
+    //global $serwer;
+   // mysqli_query($serwer, "delete from $table where ID=$nr") or exit("Błąd w zapytaniu: ");
+    //echo '<meta http-equiv="refresh" content="0">';
+     echo "<div class='popup_edit'>
+     <a href='panel.php'>X</a>
+	<form method=POST action='itemsMenage.php'> 
+    <label>WŁAŚCICIEL</label> 
+	<input type=text name='OwnerName' value='' size=15 style='text-align: left'>
+	<label>NUMER</label> 
+	<input type=text name='Number' value='' size=15 style='text-align: left'>
+    <label>MM/RR</label> 
+    <div>
+    <input type=number name='mm' value='' size=5 style='text-align: left'>/<input type=number name='rr' value='' size=5 style='text-align: left'>
+    </div>
+    <label>CVV/CVC</label> 
+	<input type=text name='ccv_cvc' value='' size=15 style='text-align: left'>
+	<input type=submit name='cardEdit[$nr]' value='Edytuj' style='width:200px'></td>
+	</table></form></div>";
+
+
+}
 $command = '';
 function makeOperation($command,$nr,$table){
     switch($command) {
-        case 'EDIT': echo $nr; break;
+        case 'EDIT': edit($nr,$table); break;
         case 'DELETE': delete($nr,$table); break;
 
     }

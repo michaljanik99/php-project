@@ -4,8 +4,20 @@ body {
 	margin: 0px;
 	background-color: #fff !important;
 	position: relative;
+	height: 100vh;
 	font: caption;
 	font-family: 'Montserrat', sans-serif;
+}
+.popup_edit{
+	position: absolute;
+	height: 40vh;
+	width: 40vw;
+	border: 1px solid green;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+
+
 }
 
 body::-webkit-scrollbar {
