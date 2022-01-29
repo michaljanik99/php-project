@@ -60,7 +60,7 @@
      document.querySelector('#myForm').style.display = "none";
      document.querySelector('.container').style.opacity = "1";
  }
-
+  
  selectedOption.addEventListener('change', (e) => {
      if (e.target.value == 1) {
         addPassword.classList.toggle('display_ye');
