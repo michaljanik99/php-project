@@ -16,8 +16,6 @@ body {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
-
-
 }
 
 a {
@@ -716,6 +714,8 @@ article ul {
 	top: 18px;
 }
 
+input[name=""]
+
 .new {
 	font-size: 15px;
 	width: 80px !important;
@@ -827,11 +827,22 @@ main img {
 }
 
 .form-popup {
-	width: 500px;
 	display: none;
+}
+
+.popup_edit input[type=text], .popup_edit input[type=email], .popup_edit input[type=number], .popup_edit input[type=password] {
+	width: 100%;
+	padding: 5px;
+	margin: 5px 0 22px 0;
+	border: none;
+	background: #f1f1f1;
+}
+
+.popup_edit{
+	height: auto;
+	width: 500px;
 	position: relative;
 	margin-top: 2em;
-	left: 35%;
 	border: 3px solid rgb(23,214,186);
 	border-radius: 8px;
 	z-index: 999;
@@ -839,26 +850,14 @@ main img {
 	background-color: #fff;
 }
 
-.form-container input[type=text], .form-container input[type=email], .form-container input[type=number] {
-	width: 100%;
-	padding: 15px;
-	margin: 5px 0 22px 0;
-	border: none;
-	background: #f1f1f1;
+.closeX {
+	font-size: 50px;
+	font-weight: 300;
+	transition: .3s;
 }
 
-.option {
-	width: 100%;
-	height: 40px;
-	margin: 20px 0;
-	font-size: 20px;
-	text-align: center;
-	border: none;
-	border-bottom: 3px solid black;
-}
-
-.option:focus {
-	outline: none;
+.closeX:hover {
+	color: red;
 }
 
 .form_title {

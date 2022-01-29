@@ -173,6 +173,25 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
                 <label class="form_title">URL</label>
                 <input type="text" class="form_input">
             </div>
+            <select id="select" class="option" name="option">
+                <option value=""></option>
+                <option value="1">Hasło</option>
+                <option value="2">Karta płatnicza</option>
+                <option value="3">Dane osobowe</option>
+            </select>
+            </label>
+            <div class="addPassword hide">
+                <label class="form_title">Nazwa</label>
+                <input type="text" class="form_input">
+                <label class="form_title">Nick</label>
+                <input type="text" class="form_input">
+                <label class="form_title">E-mail</label>
+                <input type="email" class="form_input">
+                <label class="form_title">Hasło</label>
+                <input type="text" class="form_input">
+                <label class="form_title">URL</label>
+                <input type="text" class="form_input">
+            </div>
 
             <div class="addCard hide">
                 <label class="form_title">Nazwa</label>
@@ -233,63 +252,67 @@ function delete($nr,$table) {
 
 }
 function edit($nr=-1,$table) {
-    $popup_edit="<div class='popup_edit'><a href='panel.php'>X</a>";
+    $popup_edit="<div class='popup_edit'>";
     switch ($table){
         case 'cardstable': $popup_edit.="<form method=POST action='itemsMenage.php'> 
-    <label>NAZWA</label> 
-	<input type=text name='Name' value='' size=15 style='text-align: left'>
-	<label>WYDAWCA</label> 
-	<input type=text name='PaymentCardIssuer' value='' size=15 style='text-align: left'>
-    <label>WŁAŚCICIEL</label> 
-	<input type=text name='OwnerName' value='' size=15 style='text-align: left'>
-	<label>NUMER</label> 
-	<input type=text name='Number' value='' size=15 style='text-align: left'>
-    <label>MM/RR</label> 
+    <label class='form_title'>NAZWA</label> 
+	<input class='form_input' type=text name='Name' value='' size=15 style='text-align: left'>
+	<label class='form_title'>WYDAWCA</label> 
+	<input class='form_input' type=text name='PaymentCardIssuer' value='' size=15 style='text-align: left'>
+    <label class='form_title'>WŁAŚCICIEL</label> 
+	<input class='form_input' type=text name='OwnerName' value='' size=15 style='text-align: left'>
+	<label class='form_title'>NUMER</label> 
+	<input class='form_input' type=text name='Number' value='' size=15 style='text-align: left'>
+    <label class='form_title'>MM/RR</label> 
     <div>
-    <input type=number name='mm' value='' size=5 style='text-align: left'>/<input type=number name='rr' value='' size=5 style='text-align: left'>
+    <input class='form_input' type=number name='mm' value='' style='width: 40%;'>/<input class='form_input' type=number name='rr' value='' style='width: 40%;'>
     </div>
-    <label>CVV/CVC</label> 
-	<input type=text name='ccv_cvc' value='' size=15 style='text-align: left'>
-	<input type=submit name='cardEdit[$nr]' value='Edytuj' style='width:200px'></td>
-	</table></form></div>";
+    <label class='form_title'>CVV/CVC</label> 
+	<input class='form_input' type=text name='ccv_cvc' value='' size=15 style='text-align: left'>
+	<input class='btn btn_add' type=submit name='cardEdit[$nr]' value='Zastosuj'>
+	<a href='panel.php'><input class='btn btn_cancel' type=button value='Anuluj'></a>
+</form>";
         break;
         case 'passtable': $popup_edit.="<form method=POST action='itemsMenage.php'>
-     <label>NAZWA</label> 
-	<input type=text name='Name' value='' size=15 style='text-align: left'> 
-    <label>NICK</label> 
-	<input type=text name='Nick' value='' size=15 style='text-align: left'>
-	<label>EMAIL</label> 
-	<input type=email name='email' value='' size=15 style='text-align: left'>
-    <label>PASSWORD</label> 
-	<input type=password name='password' value='' size=15 style='text-align: left'>
-	 <label>URL</label> 
-	<input type=text name='url' value='' size=15 style='text-align: left'>
-	<input type=submit name='passEdit[$nr]' value='Edytuj' style='width:200px'></td>
-	</table></form></div>";
+     <label class='form_title'>NAZWA</label> 
+	<input class='form_input' type=text name='Name' value='' size=15 style='text-align: left'> 
+    <label class='form_title'>NICK</label> 
+	<input class='form_input' type=text name='Nick' value='' size=15 style='text-align: left'>
+	<label class='form_title'>EMAIL</label> 
+	<input class='form_input' type=email name='email' value='' size=15 style='text-align: left'>
+    <label class='form_title'>PASSWORD</label> 
+	<input class='form_input' type=password name='password' value='' size=15 style='text-align: left'>
+	 <label class='form_title'>URL</label> 
+	<input class='form_input' type=text name='url' value='' size=15 style='text-align: left'>
+	<input class='btn btn_add' type=submit name='passEdit[$nr]' value='Zastosuj'>
+	<a href='panel.php'><input class='btn btn_cancel' type=button value='Anuluj'></a>
+</form>";
             break;
-        case 'personaldatatable': $popup_edit.="<form method=POST action='itemsMenage.php'> 
-    <label>IMIĘ</label> 
+        case 'personaldatatable': $popup_edit.="
+<form method=POST action='itemsMenage.php'> 
+    <label  class='form_title'>IMIĘ</label> 
 	<input type=text name='Name' value='' size=15 style='text-align: left'>
-	<label>DRUGIE IMIĘ</label> 
+	<label class='form_input' class='form_title' >DRUGIE IMIĘ</label> 
 	<input type=text name='SecondName' value='' size=15 style='text-align: left'>
-	<label>NAZWISKO</label> 
+	<label class='form_input' class='form_title'>NAZWISKO</label> 
 	<input type=text name='LastName' value='' size=15 style='text-align: left'>
-	<label>PESEL</label> 
+	<label class='form_input' class='form_title'>PESEL</label> 
 	<input type=text name='PESEL' value='' size=15 style='text-align: left'>
-	<label>E-MAIL</label> 
-	<input type=email name='E-mail' value='' size=15 style='text-align: left'>
-	<label>TELEFON</label> 
-	<input type=phone name='PhoneNumber' value='' size=15 style='text-align: left'>
-	<label>ADRES</label> 
-	<input type=text name='Adress' value='' size=15 style='text-align: left'>
-	<label>KOD POCZTOWY</label> 
-	<input type=text name='Postcode' value='' size=15 style='text-align: left'>
-	<label>MIASTO</label> 
-	<input type=text name='City' value='' size=15 style='text-align: left'>
-	<label>KRAJ</label> 
-	<input type=text name='Country' value='' size=15 style='text-align: left'>
-	<input type=submit name='personaldataEdit[$nr]' value='Edytuj' style='width:200px'></td>
-	</table></form></div>";
+	<label class='form_input' class='form_title'>E-MAIL</label> 
+	<input class='form_input' type=email name='E-mail' value='' size=15 style='text-align: left'>
+	<label class='form_title'>TELEFON</label> 
+	<input class='form_input' type=phone name='PhoneNumber' value='' size=15 style='text-align: left'>
+	<label class='form_title'>ADRES</label> 
+	<input class='form_input' type=text name='Adress' value='' size=15 style='text-align: left'>
+	<label class='form_title'>KOD POCZTOWY</label> 
+	<input class='form_input' type=text name='Postcode' value='' size=15 style='text-align: left'>
+	<label class='form_title'>MIASTO</label> 
+	<input class='form_input' type=text name='City' value='' size=15 style='text-align: left'>
+	<label class='form_title'>KRAJ</label> 
+	<input class='form_input' type=text name='Country' value='' size=15 style='text-align: left'>
+	<input class='btn btn_add' type=submit name='personaldataEdit[$nr]' value='Zastosuj'>
+	<a href='panel.php'><input class='btn btn_cancel' type=button value='Anuluj'></a>
+</form>";
             break;
 
 
