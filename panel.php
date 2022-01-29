@@ -6,9 +6,11 @@ if(!isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']!==true){
 };
 require_once('connect.php');
 global $serwer;
-$dataPasswords = mysqli_query($serwer ,"SELECT * FROM passTable");
-$dataCards = mysqli_query($serwer ,"SELECT * FROM cardsTable");
-$dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
+$userId= $_SESSION['userId'];
+echo $userId;
+$dataPasswords = mysqli_query($serwer ,"SELECT * FROM passTable where user_ID = $userId");
+$dataCards = mysqli_query($serwer ,"SELECT * FROM cardsTable where user_ID = $userId");
+$dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable where user_ID = $userId");
 ?>
 
 <!DOCTYPE html>
