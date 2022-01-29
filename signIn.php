@@ -25,7 +25,7 @@ if (isset($_POST['rejestruj']))
             if(!mysqli_num_rows(mysqli_query($serwer, "SELECT  `login` FROM `users` WHERE login='$login'")))
             {
                 mysqli_query($serwer, "insert into users (login, password, email) values('$login','$haslo1','$email')") or exit("Przepraszamy, wystąpił nieoczekiwany błąd");
-                echo  '<p>Pomyślnie zarejestrowano do systemu</p><a href="index.php"  style="color:red; width:100%;display: block;text-align: center;">Przejdź do logowania</a>';
+                echo '<p>Pomyślnie zarejestrowano do systemu</p><a href="index.php"  style="color:red; width:100%;display: block;text-align: center;">Przejdź do logowania</a>';
             }
             else
             {

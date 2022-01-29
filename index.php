@@ -1,20 +1,9 @@
 <?php
 session_start();
-require_once('connect.php');
-global $serwer,$baza;
-if (isset($_POST['loguj']))
-{
-    $login = $_POST['login'];
-    $haslo = $_POST['haslo'];
-    $dane = mysqli_query($serwer, "SELECT * FROM `users` WHERE login='$login' AND password='$haslo'");
-    if (mysqli_num_rows($dane))
-    {
-        echo "loggedin";
-        $_SESSION['zalogowany'] = true;
-        $_SESSION['login'] = $login;
-    }
-    else echo "Wpisano złe dane.";
-}
+if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true){
+    header('Location: panel.php');
+    exit();
+};
 ?>
 <!doctype html>
 <html lang="en">
@@ -28,12 +17,20 @@ if (isset($_POST['loguj']))
   <main>
   <h1 class="visually-hidden">Logowanie</h1>
       <br><div style="display: flex;align-items: center; flex-direction: column">
-          <form method="POST" action="">
+          <form method="POST" action="logIn.php">
           <b>Login:</b> <input type="text" name="login"><br>
-          <b>Hasło:</b> <input type="password" name="haslo"><br>
-          <input type="submit" value="Zaloguj" name="loguj">
+          <b>Hasło:</b> <input type="password" name="password"><br>
+          <input type="submit" value="Zaloguj" name="logIn">
           </form>
           <a href="signIn.php">Zarjestruj się</a>
+          <?php
+          if(isset($_SESSION['error_1']) && $_SESSION['error_1']==true){
+             echo "Bedne hasło";
+          };
+          if(isset($_SESSION['error_2']) && $_SESSION['error_2']==true){
+              echo "Urzytkownik nie istnije";
+          };
+          ?>
       </div>
   </body>
 </html>

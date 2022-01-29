@@ -1,16 +1,18 @@
 <?php
-require('connect.php.php');
-
-	// 4. wykonanie zapytania pobierającego dane
+session_start();
+if(!isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']!==true){
+    header('Location: index.php');
+    exit();
+};
+require_once('connect.php');
+    global $serwer;
     $dataPasswords = mysqli_query($serwer ,"SELECT * FROM passTable");
     $dataCards = mysqli_query($serwer ,"SELECT * FROM cardsTable");
     $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
-    
     ?>
 
 <!DOCTYPE html>
 <html lang="pl">
-
 <head>
     <meta charset="UTF-8">
     <title>Mateusz Burnagiel i Michał Janik</title>
@@ -24,6 +26,8 @@ require('connect.php.php');
     <!-- partial:index.partial.html -->
     <div class="bar">
         <h2 class="title_site">Crypton</h2>
+        <?= $_SESSION['userId'] ?>
+        <a href="logOut.php">Wyloguj</a>
         <div class="">
             <a href="">
                 <p id="favourite" class="title_sidebar"><i class="far fa-star mr-2"></i>Ulubione</p>
