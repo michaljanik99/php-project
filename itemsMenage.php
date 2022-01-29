@@ -51,7 +51,8 @@ if(isset($_POST['personaldataEdit'])) {
     $City = $_POST['City'];
     $Country = $_POST['Country'];
     if($nr==-1){
-        mysqli_query($serwer,"INSERT INTO `personaldatatable`(`ID`, `Name`, `SecondName`, `LastName`, `PESEL`, `e-mail`, `PhoneNumber`, `Adress`, `Postcode`, `City`, `Country`)  VALUES (null,'$name','$email','$nick','$password','$url')") or exit("Błąd w zapytaniu");
+        $df="INSERT INTO `personaldatatable`(`ID`, `Name`, `SecondName`, `LastName`, `PESEL`, `e-mail`, `PhoneNumber`, `Adress`, `Postcode`, `City`, `Country`)  VALUES (null,'$Name','$SecondName','$LastName','$PESEL','$Email','$PhoneNumber','$Adress','$Postcode','$City','$Country')";
+        mysqli_query($serwer,$df) or exit("Błąd w zapytaniu $df");
 
     }
     else{
