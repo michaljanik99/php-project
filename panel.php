@@ -249,7 +249,9 @@ function edit($nr,$table) {
 	<input type=submit name='cardEdit[$nr]' value='Edytuj' style='width:200px'></td>
 	</table></form></div>";
         break;
-        case 'passtable': $popup_edit.="<form method=POST action='itemsMenage.php'> 
+        case 'passtable': $popup_edit.="<form method=POST action='itemsMenage.php'>
+     <label>NAZWA</label> 
+	<input type=text name='Name' value='' size=15 style='text-align: left'> 
     <label>NICK</label> 
 	<input type=text name='Nick' value='' size=15 style='text-align: left'>
 	<label>EMAIL</label> 
