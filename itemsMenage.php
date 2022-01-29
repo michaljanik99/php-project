@@ -12,7 +12,14 @@ if(isset($_POST['cardEdit'])) {
     $rr = $_POST['rr'];
     $Name = $_POST['Name'];
     $ccv_cvc = $_POST['ccv_cvc'];
-    mysqli_query($serwer, "update cardstable set OwnerName='$OwnerName', Number='$Number', Name='$Name', PaymentCardIssuer='$PaymentCardIssuer', Year='$rr', Month='$mm', `CVV/CVC`='$ccv_cvc' where ID='$nr'") or exit("Błąd w zapytaniu: ");
+
+    if($nr==-1){
+
+       mysqli_query($serwer,"INSERT INTO `cardstable`(`ID`, `OwnerName`, `Number`, `PaymentCardIssuer`, `Month`, `Year`, `CVV/CVC`, `Name`)  VALUES (null,'$OwnerName','$Number','$PaymentCardIssuer','$mm','$rr','$ccv_cvc','$Name')" ) or exit("Błąd w zapytaniu");
+    }
+    else{
+        mysqli_query($serwer, "update cardstable set OwnerName='$OwnerName', Number='$Number', Name='$Name', PaymentCardIssuer='$PaymentCardIssuer', Year='$rr', Month='$mm', `CVV/CVC`='$ccv_cvc' where ID='$nr'") or exit("Błąd w zapytaniu: ");
+    }
     header("Location:panel.php");
 }
 if(isset($_POST['passEdit'])) {

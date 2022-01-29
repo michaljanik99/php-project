@@ -84,7 +84,8 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
     <?php while($row = mysqli_fetch_array($dataCards)) { ?>
         <article class="block-cards display_no ">
             <nav class="add_new1">
-                <li class="new"><input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='dodaj'></li>
+
+                <li class="new"><form method="post"><input class="edit" type='submit' name='cardDelete[<?=$row['ID']?>]' value='dodaj'></form></li>
             </nav>
             <ul class="sin_opt">
             <form method="post">
@@ -231,7 +232,7 @@ function delete($nr,$table) {
     echo '<meta http-equiv="refresh" content="0">';
 
 }
-function edit($nr,$table) {
+function edit($nr=-1,$table) {
     $popup_edit="<div class='popup_edit'><a href='panel.php'>X</a>";
     switch ($table){
         case 'cardstable': $popup_edit.="<form method=POST action='itemsMenage.php'> 
@@ -303,7 +304,7 @@ function makeOperation($command,$nr,$table){
     switch($command) {
         case 'edytuj': edit($nr,$table); break;
         case 'usuń': delete($nr,$table); break;
-        case 'dodaj': edit("",$table);; break;
+        case 'dodaj': edit(-1,$table);; break;
 
     }
 }
@@ -315,6 +316,7 @@ if(isset($_POST['passDelete'])) {
 }
 if(isset($_POST['cardDelete'])) {
     $nr = key($_POST['cardDelete']);
+    echo $nr;
     $command = $_POST['cardDelete'][$nr];
     $table ="cardstable";
     makeOperation($command,$nr,$table);
@@ -322,6 +324,7 @@ if(isset($_POST['cardDelete'])) {
 
 if(isset($_POST['dataDelete'])) {
     $nr = key($_POST['dataDelete']);
+    echo $nr;
     $command = $_POST['dataDelete'][$nr];
     $table ="personaldatatable";
     makeOperation($command,$nr,$table);
