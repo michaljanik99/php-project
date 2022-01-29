@@ -52,13 +52,13 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
 
         <article class="block-passwords display_no ">
             <nav class="add_new1">
-                <li class="new">Dodaj</li>
+                <li class="new"><input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='Dodaj 1'></li>
             </nav>
             <ul class="sin_opt">
                 <form method="post">
                     <input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='EDIT'>
                     <input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='DELETE'>
-                    <input class="new" type='submit' name='passDelete[<?=$row['ID']?>]' value='Dodaj'></input>
+                    <input class="new" type='submit' name='passDelete[<?=$row['ID']?>]' value='Dodaj'>
                 </form>
             </ul>
             <main ><?=$row['Name']?>
@@ -84,6 +84,9 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
 
     <?php while($row = mysqli_fetch_array($dataCards)) { ?>
         <article class="block-cards display_no ">
+            <nav class="add_new1">
+                <li class="new"><input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='Dodaj 2'></li>
+            </nav>
             <ul class="sin_opt">
             <form method="post">
                 <input class="edit" type='submit' name='cardDelete[<?=$row['ID']?>]' value='EDIT'><i class="far fa-edit"></i>
@@ -115,6 +118,9 @@ $dataPersonalInfo = mysqli_query($serwer ,"SELECT * FROM PersonalDataTable");
 
         <?php while($row = mysqli_fetch_array($dataPersonalInfo)) { ?>
         <article class="block-personal_data display_no">
+            <nav class="add_new1">
+                <li class="new"><input class="edit" type='submit' name='passDelete[<?=$row['ID']?>]' value='Dodaj 3'></li>
+            </nav>
             <ul class="sin_opt">
                 <form method="post">
                     <input class="edit" type='submit' name='dataDelete[<?=$row['ID']?>]' value='EDIT'>
